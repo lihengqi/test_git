@@ -1,0 +1,80 @@
+1、unittest基本使用
+	1 导入模块： import unittest
+	2 建立测试类
+		class ModuleTest(unittest.TestCase):     #测试类，继承unittest.TestCase
+
+    		def setUp(self):                 # 初始化工作（初始化变量、生成测试数据、打开浏览器等）
+        		self.cal = Calculator(8,4)
+
+   			def tearDown(self):             # 善后工作（清除测试数据、关闭文件、关闭浏览器等）
+        		pass
+
+    		def test_add(self):             # 测试用例
+        		result = self.cal.add()
+        		self.assertEqual(result,12)
+    3 构建测试用例集
+    	suite = unittest.TestSuite()
+    	suite.addTest(ModuleTest("test_add"))
+    	...
+    4 执行测试
+    	runner = unittest.TextTestRunner()
+    	runner.run(suite)
+
+2、Django 测试
+	1 导入模块：from django.test import TestCase
+	2 建立测试类
+		class ModelTest(TestCase):
+
+    		def setUp(self):                 # 初始化工作（初始化变量、生成测试数据、打开浏览器等）        
+        		Event.objects.create(id = 1, name = "oneplus 3 events",status = True,limit = 2000,address = 'shenzhen',
+                             start_time = '2016-08-31 02:18:22')
+
+        		Guest.objects.create(id = 1,event_id = 1,realname = 'alen',phone = '13711001101',email = 'alen@mail.com,',
+                             sign = False)
+
+    		def test_event_model(self):         # 测试用例
+        		result = Event.objects.get(name = "oneplus 3 events")
+        		self.assertEqual(result.address,"shenzhen")
+        		self.assertTrue(result.status)
+    3 执行测试
+    	（1）整体测试：python manage.py test
+    	（2）应用测试：python manage.py test sign
+    	（3）应用下的tests文件测试：python manage.py test sign.tests
+    	（4）应用下的tests文件的ModelTest类测试：python manage.py test sign.ModuleTest
+    	（5）应用下的tests文件的ModelTest类下的test_event_model用例测试：python manage.py test sign.ModuleTest.test_event_model
+    	（6）参数模糊查询：python manage.py test -p test*.py 
+
+    		
+
+3、客户端测试
+	1 django.test.Client类的应用 ；模拟get和post请求，观察相应结果
+	2 django.test.Client函数：
+		（1）self.client.post(or get)('页面'，接口值)
+		（2）assertEqual(a,b): a 为系统返回值，b为预期值
+		（3）assertTemplateUsed((1),预期页面)：（1）用的是否为预期页面的模板
+		（4）assertIn(b"预期"，response.content): 预期值是否在response的接口中
+
+4、接口测试相关概念
+	1 分层的自动化测试
+		（1) 应该做更低级别的单元测试，而不是用户界面运行高层端到端的测试
+		（2）分层方法：unit-->service-->UI 
+		（3）测试方法：unit(code review)-->service(集成接口测试，web接口测试)-->UI(UI自动化，JS自动化)
+	2 单元测试与模块测试
+		（1）单元测试
+			1.单元测试是应用程序可以测试的最小单元
+			2.在面向对象编程中，单元可以是最小模块，单一般是单个函数或过程
+			3.面向对象编程中，单元通常是接口
+			4.单元测试一般由开发完成
+		（2）模块测试
+			1.模块测试时针对有明显功能的代码块进行测试
+			2.单元测试只能涉及一小部分功能
+			3.模块测试一般由其他开发或者测试完成
+	3 接口测试
+		（1）接口分类
+			1.系统与系统之间的接口：系统<-->系统
+			2.下层服务与上层服务的接口：应用程序<-->service<-->DB
+			3.系统内部，服务与服务之间的调用
+		（2）接口测试的意义
+			1.更早的发现问题
+			2.缩短产品开发周期
+			3.发现更底层的问题
