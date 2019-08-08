@@ -1,0 +1,14 @@
+一个接口实现多个接口：
+    必须实现所有接口的属性和方法
+    class C implements A,B{
+
+    }
+1、作为mixins的类只能继承自Object，不能继承其他类
+  2、作为mixins的类不能有构造函数
+  3、一个类可以mixins多个mixins类
+  4、mixins绝不是继承，也不是接口，而是一种全新的特性
+*/
+一个类使用多个类的方法
+    class C with A,B{
+
+    }
