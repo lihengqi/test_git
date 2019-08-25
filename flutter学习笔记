@@ -3,7 +3,8 @@
         以main(){}为入口，执行内容写在{}内部
         viod main(){}是一个没有返回值的入口函数
     2、注释：
-        /,/* */
+        /
+        /* */
     3、变量
         var 定义一个变量,自动推断类型
         string 定义一个字符变量
@@ -17,3 +18,321 @@
     5、常量
         final、const
         区别：final可以使用调用函数，定义时初始化
+    6、数据类型
+        1）字符串
+            定义：
+                var str = 'test'
+                String str = 'test'
+            拼接：
+                print("$str1 $str2")
+                print(str1 + ' ' + str2)
+        2）数字
+            int 整型
+            double 浮点型
+        3）运算符
+            算数运算符
+                + 加，- 减，* 乘，/ 除， % 取余 ，~/取整
+            关系运算符
+                == 等于  != 不等于  > 大于   < 小于   >= 大于等于  <=  小于等于
+            逻辑运算符
+                ！取反
+                && 且
+                || 或
+            赋值运算符
+                = 赋值
+                ??= 如果为空才赋值
+                +=，-=，*=，/=，可以使用
+            三目运算符
+                c= flag1 ？case1：case2      如果满足flag1，c =case1，否则c = case2
+            ??运算符
+                b = a ?? 10     如果a为空，b=10，如果a不为空，b = a
+            自增，自减
+                ++，-- :  ++写前面，先运算后赋值，++写后面，先赋值后运算
+        4）布尔类型
+            小写
+            bool flag= true/false
+        5）List（数组）
+            定义：
+                var ll = [111,222,333]
+                var lll = new List<type>()           //新建一个空list,限制列表元素类型为type（type可以为空）
+            属性：
+                var ll = [111,222,333]
+                数组长度：ll.length
+                翻转：ll.reversed     返回一个元组
+                为空：ll.isEmpty         
+                不为空：ll.isNotEmpty
+            方法：
+                var ll = [111,222,333]
+                增加一个数据：add(str)
+                增加一个列表：addAll(list)
+                查找输入：indexOf(str)   查到返回索引，查找不到返回-1
+                删除  传入具体值：remove
+                删除  传入索引值：removeAt
+                指定位置插入：insert(index, value)
+                指定位置插入表：insert(index, list)
+                其他类型转换为list：toList()
+                字符串转化为list(分割字符)：split()
+                List转化字符串：join(str)    元素以str连接
+        6）Set(元组)
+            定义：
+                set不能重复，无顺序
+                var S1 = {111,222,333}
+                var S2 = new Set();
+                s2.add()
+            方法同list
+        6）Maps（字典）
+            定义：
+                var M1 = {
+                'key1':'values1',
+                'key2':'values2'
+                }
+                var M2 = new Map()
+                M2['key1'] = 'values1'
+            方法：
+                包含key：containsValue  返回布尔值
+                遍历：forEach((value){
+                    print(value)
+                })
+                修改：map((value){
+                    return value*2;
+                })
+                满足条件返回：where((value){
+                    return value>5;
+                })
+                其中一个满足：any((value){
+                    return value>5;
+                })
+                所有都满足:every((value){
+                    return value>5;
+                })
+        7）判断一个对象的类型
+            is
+            var is String/int
+    7、条件判断
+        if(flag 1){             
+            case 1;
+        } else if(flag 2){
+            case 2；
+        } else{
+            case 3；
+        }
+
+        switch(flag){
+            case 1:
+                cs1;
+                break;
+            case 2 :
+                cs 2;
+                break;
+            default:
+                cs3;
+                break;
+        }
+    8、类型转换
+        number to string   toString()         a.toString()
+        string to int      int.parse()        int.parse(b)
+        string to double   double.parse()
+        other to bool      isEmpty  判断是否为空
+    9、循环类型
+        for循环：
+            for(起始值，条件，循环体){
+                执行操作
+            }
+        while循环：
+            while(条件){
+                执行操作
+            }
+
+        do···while循环：
+            do{
+                执行操作
+            }while(条件)
+            do···while和while的区别：do先执行，后判断，while，先判断后执行
+        break：
+            遇到break，跳出当前循环
+        continue：
+            遇到continue，跳过当前循环
+    10、函数、方法
+        自定义方法：
+        自定义方法的基本格式：
+        返回类型  方法名称（参数1，参数2,...）{
+            方法体
+            return 返回值;
+        }
+        方法定义域：
+            内部可以调用外部方法，外部方法不能调用内部方法
+        定义一个带可选参数的方法：可选参数用[];
+        定义一个默认参数方法：[sex=‘3422’]
+        定义一个命名参数方法：{int age,String sex='男'} ，调用printUserInfo('张三',age:20,sex:'未知')
+        箭头函数:只能写一句话（value）=>case
+    11、类、对象
+        1）位置
+            主函数外
+            main函数外面
+        2）定义方法
+            class Person{
+                String name = 'll';
+                int age = 123;
+
+                void getInfo{
+                    print("${this.name}")    ------------this == python self
+                }
+            }
+        3）调用类
+            实例化      var p1 = Person()
+            调用方法    p1.getInfo（）
+        4）构造函数
+            class Person{
+                String name = 'll';
+                int age = 123;
+                //   //默认构造函数          ---------构造函数 == python __init__()
+
+                Person(){
+                    print('这是构造函数里面的内容  这个方法在实例化的时候触发');
+                }
+
+                void getInfo{
+                    print("${this.name}")    ------------this == python self
+                }
+                //    命名构造函数
+                Person.now(){
+                    print('这是命名构造函数')-----------//调用方法：Person.now（）
+                }
+            }
+        5）类单独抽离成文件
+            类位于其他文档
+            引入方式：import 'lib/Person.dart'
+        6）私有方法、私有属性
+            类型前方加 _ 变为私有
+            私有方法只有在新文件里才有用
+        7）get和set
+            get       调用时以属性调用
+            // class Rect{
+            //   num height;
+            //   num width; 
+  
+            //   Rect(this.height,this.width);
+            //   area(){                                    get area{
+            //     return this.height*this.width;
+            //   }                                              }
+            // }
+        8）静态属性和方法
+            定义方法 static
+            静态方法不能访问非静态成员，非静态方法可以访问静态成员
+            非静态方法最好用this访问，静态方法直接访问
+        9）对象操作符
+            ?     条件运算符 （了解）        如果为空，不调用方法
+            as    类型转换
+            is    类型判断
+            ..    级联操作 （连缀）  (记住)
+        10）继承
+            1、子类使用extends关键词来继承父类
+            2、子类会继承父类里面可见的属性和方法 但是不会继承构造函数
+            3、子类能复写父类的方法 getter和setter
+        11）抽象类
+            Dart中抽象类: Dart抽象类主要用于定义标准，子类可以继承抽象类，也可以实现抽象类接口
+                1、抽象类通过abstract 关键字来定义
+                2、Dart中的抽象方法不能用abstract声明，Dart中没有方法体的方法我们称为抽象方法。
+                3、如果子类继承抽象类必须得实现里面的抽象方法
+                4、如果把抽象类当做接口实现的话必须得实现抽象类里面定义的所有属性和方法。
+                5、抽象类不能被实例化，只有继承它的子类可以
+                6、抽象方法定义方法：抽象类里的没有方法体的方法就是抽象方法
+        12）多态
+            子类的实例赋值给父类的引用。
+            多态就是父类定义一个方法不去实现，让继承他的子类去实现，每个子类有不同的表现。
+        13）接口
+            1、定义：
+                首先，dart的接口没有interface关键字定义接口，而是普通类或抽象类都可以作为接口被实现。
+                同样使用implements关键字进行实现。
+                但是dart的接口有点奇怪，如果实现的类是普通类，会将普通类和抽象中的属性的方法全部需要覆写一遍。
+                而因为抽象类可以定义抽象方法，普通类不可以，所以一般如果要实现像Java接口那样的方式，一般会使用抽象类。
+                建议使用抽象类定义接口。
+            2、一个接口实现多个接口：
+                必须实现所有接口的属性和方法
+                    class C implements A,B{
+
+                    }
+            3、mixins
+                1、作为mixins的类只能继承自Object，不能继承其他类
+                2、作为mixins的类不能有构造函数
+                3、一个类可以mixins多个mixins类
+                4、mixins绝不是继承，也不是接口，而是一种全新的特性
+                */
+                一个类使用多个类的方法
+                    class C with A,B{
+
+                    }
+        14）泛型
+            通俗理解：泛型就是解决 类 接口 方法的复用性、以及对不特定数据类型的支持(类型校验)
+    12、库
+        1、Dart中的库主要有三种：
+            1、我们自定义的库     
+              import 'lib/xxx.dart';
+            2、系统内置库       
+              import 'dart:math';    
+              import 'dart:io'; 
+              import 'dart:convert';
+            3、Pub包管理系统中的库  
+              https://pub.dev/packages
+              https://pub.flutter-io.cn/packages
+              https://pub.dartlang.org/flutter/
+        2、//api接口： http://news-at.zhihu.com/api/3/stories/latest
+            getDataFromZhihuAPI() async{
+            //1、创建HttpClient对象
+                var httpClient = new HttpClient();  
+            //2、创建Uri对象
+                var uri = new Uri.http('news-at.zhihu.com','/api/3/stories/latest');
+            //3、发起请求，等待请求
+                var request = await httpClient.getUrl(uri);
+            //4、关闭请求，等待响应
+                var response = await request.close();
+            //5、解码响应的内容
+                return await response.transform(utf8.decoder).join();
+            }
+        3、pub包管理系统:
+            1、从下面网址找到要用的库
+                https://pub.dev/packages
+                https://pub.flutter-io.cn/packages
+                https://pub.dartlang.org/flutter/
+            2、创建一个pubspec.yaml文件，内容如下
+                name: xxx
+                description: A new flutter module project.
+                dependencies:  
+                    http: ^0.12.0+2
+                    date_format: ^1.0.6
+            3、配置dependencies
+            4、运行pub get 获取远程库
+            5、看文档引入库使用
+                import 'dart:convert' as convert;
+                import 'package:http/http.dart' as http;
+                import 'package:date_format/date_format.dart';
+
+                main() async {
+                  // var url = "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1";
+
+                  //   // Await the http get response, then decode the json-formatted responce.
+                  //   var response = await http.get(url);
+                  //   if (response.statusCode == 200) {
+                  //     var jsonResponse = convert.jsonDecode(response.body);
+                     
+                  //     print(jsonResponse);
+                  //   } else {
+                  //     print("Request failed with status: ${response.statusCode}.");
+                  //   }
+
+        4、部分导入
+          如果只需要导入库的一部分，有两种模式：
+             模式一：只导入需要的部分，使用show关键字，如下例子所示：
+              import 'package:lib1/lib1.dart' show foo;
+             模式二：隐藏不需要的部分，使用hide关键字，如下例子所示：
+              import 'package:lib2/lib2.dart' hide foo;      
+        5、延迟加载
+            也称为懒加载，可以在需要的时候再进行加载。
+            懒加载的最大好处是可以减少APP的启动时间。
+            懒加载使用deferred as关键字来指定，如下例子所示：
+            import 'package:deferred/hello.dart' deferred as hello;
+            当需要使用的时候，需要使用loadLibrary()方法来加载：
+            greet() async {
+              await hello.loadLibrary();
+              hello.printGreeting();
+            }
