@@ -336,3 +336,84 @@
               await hello.loadLibrary();
               hello.printGreeting();
             }
+
+二、flutter 学习
+    1、flutter目录介绍
+        android：安卓资源目录
+        ios：苹果开发资源目录
+        lib：代码目录
+        pubspec.yaml：项目配置文件
+    2、入口文件、入口方法
+        入口文件：main.dart
+        入口方法：
+            dart入口方法：main()
+            flutter入口方法：runApp()
+        入口函数：void main() => runApp(MyApp());
+    3、自定义组件
+        class MyApp extends StatelessWidget{
+            @override
+            Widget build(BuildContext context) {
+                // TODO: implement build
+                return Center(
+                    child: Text(
+                        "我是一个文本内容",
+                        textDirection: TextDirection.ltr,
+                    ),
+                );
+            }
+        }
+    4、Text装饰
+            child: Text(
+                '你好Flutter123',
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                    fontSize: 40.0,
+                    //color: Color.fromRGBO(244, 233, 122, 0.5),
+                    color: Colors.blue,
+                ),
+            ),
+    5、装饰整体app（整体app结构）
+        MaterialApp(
+            home: Scaffold(
+                appBar: AppBar(
+                    title: Text('Flutter Demo')
+                ),
+                body: HomeContent(),
+            ),
+            theme: ThemeData(
+                primarySwatch: Colors.yellow
+            ),
+        );
+    6、container组件
+        类似于h5中的div
+        包含字段：
+            child:子元素
+            width:容器宽度
+            height:容器高度
+            margin:EdgeInsets.all(15) 与外部部件的距离
+            padding:EdgeInsets.all(15) 与内部部件的距离
+            transform：让container存在一定变化
+                Matrix4.rotationX(double) 上下缩放
+                Matrix4.rotationY(double) 左右缩放
+                Matrix4.rotationZ(double) 旋转
+            decoration:BoxDecoration() 容器装饰
+                color:背景颜色
+                border:Border.all()容器边界
+                    color:边界颜色
+                    width:边界宽度
+    7、Text详细描述
+        textAlign:TextAlign.center    文本对齐方式
+        overflow:TextOverflow.         超出显示范围如何处理
+            clip裁剪，fade 渐隐，ellipsis 省略号        
+        maxLines:最大行数     overflow必须与maxLine同时使用
+        style:TextStyle             文字样式
+            decoration:          文字装饰线（none 没有线，lineThrough 删除线，overline 上划线，underline 下划线）
+            decorationColor:文字装饰线颜色
+            decorationStyle：文字装饰线风格（[dashed,dotted]虚线，
+double 两根线，solid 一根实线，wavy 波浪
+            wordSpacing：单词间隙（如果是负值，会让单词变得更紧凑
+            letterSpacing：fontStyle 文字样式（italic 斜体，normal 正常体）
+fontSize 文字大小
+color 文字颜色
+fontWeight 字体粗细（bold 粗体，normal 正常体）
+
